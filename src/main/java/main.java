@@ -13,18 +13,17 @@ public class Main {
         secure("deploy/keystore.jks", "12345678", null, null);
         Spark.ipAddress("0.0.0.0");
         post("/api", (req, res) -> {
-
             JSONParser parser = new JSONParser();
-            JSONObject response = new JSONObject();
             JSONObject request = new JSONObject();
+            JSONObject response = new JSONObject();
             try {
-                response = (JSONObject) parser.parse(new FileReader("request.json"));
-                System.out.println((String) response.get("version"));
-                System.out.println(req);
+                response = DiaglogHandler.DialogHandler(request);
             } catch (ParseException | IOException e) {
                 e.printStackTrace();
             }
             return response;
         });
+
     }
+
 }
