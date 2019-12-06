@@ -15,13 +15,24 @@ public class Main {
             JSONObject response = new JSONObject();
             try {
                 JSONObject request = (JSONObject) parser.parse(req.body());
-                response = DiaglogHandler.DialogHandler(request);
+                response = DialogHandler(request);
             } catch (ParseException | IOException e) {
                 e.printStackTrace();
             }
             return response;
         });
+        get("/", (req, res) -> {
+            String ledState = "111";
+            return ledState;
+        });
 
+    }
+
+    static JSONObject DialogHandler(JSONObject request) throws IOException, ParseException {
+
+        JSONObject response = new JSONObject();
+        JSONParser parser = new JSONParser();
+        return response;
     }
 
 }
